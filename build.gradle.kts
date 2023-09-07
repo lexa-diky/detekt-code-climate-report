@@ -15,7 +15,7 @@ repositories {
 dependencies {
     compileOnly("io.gitlab.arturbosch.detekt:detekt-api:1.22.0")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
-    testImplementation("io.gitlab.arturbosch.detekt:detekt-test:1.22.0")
+    testImplementation("io.gitlab.arturbosch.detekt:detekt-test:1.23.1")
     testImplementation(kotlin("test"))
 }
 
