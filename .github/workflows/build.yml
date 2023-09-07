@@ -1,9 +1,9 @@
-name: Gradle Package
+name: Build
 
 on:
-  release:
-    types: [created]
-
+  push:
+     branches: ["*"]
+      
 jobs:
   build:
 
@@ -24,11 +24,3 @@ jobs:
       uses: gradle/gradle-build-action@ef76a971e2fa3f867b617efd72f2fbd72cf6f8bc # v2.8.0
       with:
         arguments: build
-
-    - name: Publish to GitHub Packages
-      uses: gradle/gradle-build-action@ef76a971e2fa3f867b617efd72f2fbd72cf6f8bc # v2.8.0
-      with:
-        arguments: publish
-      env:
-        OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
-        OSSRH_TOKEN: ${{ secrets.OSSRH_TOKEN }}
