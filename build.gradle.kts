@@ -1,6 +1,9 @@
+import io.gitlab.arturbosch.detekt.Detekt
+
 plugins {
     kotlin("jvm") version "1.9.10"
     kotlin("plugin.serialization") version "1.9.10"
+    id("io.gitlab.arturbosch.detekt") version "1.23.1"
     id("maven-publish")
     id("signing")
 }
@@ -15,13 +18,16 @@ repositories {
 dependencies {
     compileOnly("io.gitlab.arturbosch.detekt:detekt-api:1.23.1")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
-    testImplementation(kotlin("test"))
-}
-
-tasks.test {
-    useJUnitPlatform()
 }
 
 kotlin {
     jvmToolchain(8)
+}
+
+tasks.register<Detekt>("detektCheck") {
+    allRules = true
+    reports {
+        txt.required.set(true)
+        sarif.required.set(true)
+    }
 }

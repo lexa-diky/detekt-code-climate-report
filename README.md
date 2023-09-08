@@ -1,4 +1,4 @@
-# Detect CodeClimate
+# Detect ❤️ CodeClimate
 
 ![Project Type Detekt Plugin](https://img.shields.io/badge/detekt-plugin-blue)
 ![Github Actions Build Apl](https://img.shields.io/github/actions/workflow/status/lexa-diky/detekt-code-climate-report/build.yml)
