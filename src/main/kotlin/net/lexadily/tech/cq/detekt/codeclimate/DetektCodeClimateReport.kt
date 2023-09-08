@@ -1,9 +1,14 @@
 package net.lexadily.tech.cq.detekt.codeclimate
 
-import io.gitlab.arturbosch.detekt.api.*
+import io.gitlab.arturbosch.detekt.api.Debt
+import io.gitlab.arturbosch.detekt.api.Detektion
+import io.gitlab.arturbosch.detekt.api.Finding
+import io.gitlab.arturbosch.detekt.api.OutputReport
+import io.gitlab.arturbosch.detekt.api.RuleSetId
+import io.gitlab.arturbosch.detekt.api.SeverityLevel
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
-import net.lexadily.tech.cq.detekt.codeclimate.entity.*
+import net.lexadily.tech.cq.detekt.codeclimate.entity.Category
 import net.lexadily.tech.cq.detekt.codeclimate.entity.Issue
 import net.lexadily.tech.cq.detekt.codeclimate.entity.Location
 import net.lexadily.tech.cq.detekt.codeclimate.entity.Positions
@@ -58,12 +63,10 @@ class DetektCodeClimateReport : OutputReport() {
     }
 
     private fun mapLocation(dLocation: DetektLocation): Location {
-        val path = dLocation.filePath.relativePath
-            ?: dLocation.filePath.absolutePath
+        val path = dLocation.filePath.relativePath ?: dLocation.filePath.absolutePath
 
         return Location(
-            path = path.toString(),
-            positions = Positions(
+            path = path.toString(), positions = Positions(
                 Positions.Position(dLocation.source.line, dLocation.source.column)
             )
         )
