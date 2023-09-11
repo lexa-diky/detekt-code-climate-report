@@ -9,12 +9,12 @@ internal enum class Category {
     @SerialName("Complexity")
     Complexity,
 
-    @SerialName(" Performance")
+    @SerialName("Performance")
     Performance,
 
-    @SerialName(" Bug Risk")
+    @SerialName("Bug Risk")
     BugRisk,
 
-    @SerialName(" Style")
+    @SerialName("Style")
     Style
 }
