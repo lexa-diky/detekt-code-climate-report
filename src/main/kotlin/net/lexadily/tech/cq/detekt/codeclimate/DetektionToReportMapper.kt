@@ -10,6 +10,7 @@ import net.lexadily.tech.cq.detekt.codeclimate.entity.Category
 import net.lexadily.tech.cq.detekt.codeclimate.entity.Issue
 import net.lexadily.tech.cq.detekt.codeclimate.entity.Positions
 import net.lexadily.tech.cq.detekt.codeclimate.entity.Severity
+import net.lexadily.tech.cq.detekt.codeclimate.entity.TextPointer
 
 internal class DetektionToReportMapper {
 
@@ -50,7 +51,7 @@ internal class DetektionToReportMapper {
 
         return net.lexadily.tech.cq.detekt.codeclimate.entity.Location(
             path = path.toString(), positions = Positions(
-                Positions.Position(dLocation.source.line, dLocation.source.column)
+                TextPointer(dLocation.source.line, dLocation.source.column)
             )
         )
     }
