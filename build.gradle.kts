@@ -26,6 +26,7 @@ kotlin {
 
 tasks.register<Detekt>("detektCheck") {
     allRules = true
+    source(project.layout.projectDirectory.dir("src"))
     reports {
         txt.required.set(true)
         sarif.required.set(true)
