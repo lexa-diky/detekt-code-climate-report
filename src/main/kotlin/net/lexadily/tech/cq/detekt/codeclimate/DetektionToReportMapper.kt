@@ -3,14 +3,15 @@ package net.lexadily.tech.cq.detekt.codeclimate
 import io.gitlab.arturbosch.detekt.api.Debt
 import io.gitlab.arturbosch.detekt.api.Detektion
 import io.gitlab.arturbosch.detekt.api.Finding
-import io.gitlab.arturbosch.detekt.api.Location
 import io.gitlab.arturbosch.detekt.api.RuleSetId
 import io.gitlab.arturbosch.detekt.api.SeverityLevel
 import net.lexadily.tech.cq.detekt.codeclimate.entity.Category
 import net.lexadily.tech.cq.detekt.codeclimate.entity.Issue
+import net.lexadily.tech.cq.detekt.codeclimate.entity.Location
 import net.lexadily.tech.cq.detekt.codeclimate.entity.Positions
 import net.lexadily.tech.cq.detekt.codeclimate.entity.Severity
 import net.lexadily.tech.cq.detekt.codeclimate.entity.TextPointer
+import io.gitlab.arturbosch.detekt.api.Location as DetektLocation
 
 internal class DetektionToReportMapper {
 
@@ -46,10 +47,10 @@ internal class DetektionToReportMapper {
         )
     }
 
-    private fun mapLocation(dLocation: Location): net.lexadily.tech.cq.detekt.codeclimate.entity.Location {
+    private fun mapLocation(dLocation: DetektLocation): Location {
         val path = dLocation.filePath.relativePath ?: dLocation.filePath.absolutePath
 
-        return net.lexadily.tech.cq.detekt.codeclimate.entity.Location(
+        return Location(
             path = path.toString(), positions = Positions(
                 TextPointer(dLocation.source.line, dLocation.source.column)
             )
