@@ -1,9 +1,9 @@
 import io.gitlab.arturbosch.detekt.Detekt
 
 plugins {
-    kotlin("jvm") version "1.9.10"
-    kotlin("plugin.serialization") version "1.9.10"
-    id("io.gitlab.arturbosch.detekt") version "1.23.1"
+    kotlin("jvm") version libs.versions.kotlin
+    kotlin("plugin.serialization") version libs.versions.kotlin
+    id("io.gitlab.arturbosch.detekt") version libs.versions.detekt
     id("maven-publish")
     id("signing")
 }
@@ -16,8 +16,8 @@ repositories {
 }
 
 dependencies {
-    compileOnly("io.gitlab.arturbosch.detekt:detekt-api:1.23.1")
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
+    compileOnly(libs.detekt.api)
+    implementation(libs.kotlinx.serialization)
 }
 
 kotlin {
