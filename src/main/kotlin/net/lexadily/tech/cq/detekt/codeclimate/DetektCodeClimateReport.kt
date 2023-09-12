@@ -18,7 +18,7 @@ class DetektCodeClimateReport : OutputReport() {
         }
     }
 
-    override val ending: String = "codeclimate.json"
+    override val ending: String = "json"
     override val id: String = "code-climate"
     override val name: String = "code-climate"
 
