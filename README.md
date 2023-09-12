@@ -33,6 +33,10 @@ tasks.detekt {
 }
 ```
 
+## Configuration
+
+`prettyPrint` (default: true) - if true, output json will be properly formatted and human-readable
+
 ## GitLab integration
 
 To enable GitLab to read generated report, please
