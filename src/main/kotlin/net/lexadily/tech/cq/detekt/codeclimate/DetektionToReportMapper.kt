@@ -36,7 +36,7 @@ internal class DetektionToReportMapper {
         SeverityLevel.INFO -> Severity.Info
     }
 
-    private fun mapCategories(ruleSetId: String): List<Category> {
+    private fun mapCategories(ruleSetId: RuleSetId): List<Category> {
         return listOfNotNull(
             when (ruleSetId) {
                 DETEKT_RSID_COMPLEXITY -> Category.Complexity
@@ -51,8 +51,12 @@ internal class DetektionToReportMapper {
         val path = dLocation.filePath.relativePath ?: dLocation.filePath.absolutePath
 
         return Location(
-            path = path.toString(), positions = Positions(
-                TextPointer(dLocation.source.line, dLocation.source.column)
+            path = path.toString(),
+            positions = Positions(
+                begin = TextPointer(
+                    line = dLocation.source.line,
+                    column = dLocation.source.column
+                )
             )
         )
     }
@@ -65,12 +69,12 @@ internal class DetektionToReportMapper {
 
     companion object {
 
-        private const val HOURS_IN_DAY = 24
-        private const val MINUTES_IN_HOUR = 60
-        private const val REMEDIATION_MULTIPLIER = 10_000
+        private const val HOURS_IN_DAY: Int = 24
+        private const val MINUTES_IN_HOUR: Int = 60
+        private const val REMEDIATION_MULTIPLIER: Int = 10_000
 
-        private const val DETEKT_RSID_COMPLEXITY = "complexity"
-        private const val DETEKT_RSID_PERFORMANCE = "performance"
-        private const val DETEKT_RSID_POTENTIAL_BUGS = "potential-bugs"
+        private const val DETEKT_RSID_COMPLEXITY: RuleSetId = "complexity"
+        private const val DETEKT_RSID_PERFORMANCE: RuleSetId = "performance"
+        private const val DETEKT_RSID_POTENTIAL_BUGS: RuleSetId = "potential-bugs"
     }
 }
