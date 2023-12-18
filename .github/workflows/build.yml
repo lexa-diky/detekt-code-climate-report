@@ -45,7 +45,7 @@ jobs:
           arguments: clean detektCheck
 
       - name: Upload SARIF file
-        uses: github/codeql-action/upload-sarif@v2
+        uses: github/codeql-action/upload-sarif@v3
         with:
           sarif_file: build/reports/detekt/detekt.sarif
           category: detekt
