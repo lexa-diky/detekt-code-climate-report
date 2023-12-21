@@ -7,9 +7,11 @@
 
 Detekt report in [CodeClimate format](https://github.com/codeclimate/platform/blob/master/spec/analyzers/SPEC.md)
 
+Shutout to [Cromefire's implementation](https://gitlab.com/cromefire/detekt-gitlab-report) for inspiration.
+
 ## Installation
 
-1. Add dependency on library in `detektPlugin` configuration
+1. Add dependency on the library in `detektPlugin` configuration
 
 ```kotlin
 dependencies {
@@ -17,7 +19,7 @@ dependencies {
 }
 ```
 
-2. Add report in detekt settings
+2. Add the report in detekt settings
 
 ```kotlin
 tasks.detekt {
@@ -39,5 +41,5 @@ tasks.detekt {
 
 ## GitLab integration
 
-To enable GitLab to read generated report, please
+To enable GitLab to read the generated report, please
 follow [official guide](https://docs.gitlab.com/ee/ci/testing/code_quality.html#enable-code-quality).
