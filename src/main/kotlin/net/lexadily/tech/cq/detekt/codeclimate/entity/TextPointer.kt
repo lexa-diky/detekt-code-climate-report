@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class TextPointer(
+internal data class TextPointer(
     @SerialName("line")
     val line: Int,
     @SerialName("column")
