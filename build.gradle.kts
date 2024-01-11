@@ -32,3 +32,31 @@ tasks.register<Detekt>("detektCheck") {
         sarif.required.set(true)
     }
 }
+
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+
+publishing {
+    publications {
+        register("maven", MavenPublication::class) {
+            from(project.components["java"])
+            groupId = "io.github.lexa-diky"
+            artifactId = "detekt-code-climate"
+            version = "0.0.3-SNAPSHOT"
+        }
+    }
+}
+
+publishing {
+    repositories {
+        maven {
+            url = uri("https://s01.oss.sonatype.org/content/repositories/snapshots/")
+            credentials {
+                username = System.getenv("MAVEN_CENTRAL_USERNAME")
+                password = System.getenv("MAVEN_CENTRAL_PASSWORD")
+            }
+        }
+    }
+}
