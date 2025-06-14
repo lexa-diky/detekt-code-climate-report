@@ -15,17 +15,17 @@ Shutout to [Cromefire's implementation](https://gitlab.com/cromefire/detekt-gitl
 
 ```kotlin
 dependencies {
-    add("detektPlugins", "io.github.lexa-diky:detekt-code-climate:0.1.0")
+    add("detektPlugins", "io.github.lexa-diky:detekt-code-climate-report:0.1.0")
 }
 ```
 
 2. Add the report in detekt settings
 
 ```kotlin
-tasks.detekt {
-    // recommended for better report generation
+tasks.withType<Detekt> {
+    // (OPTIONAL) Required for proper relative file linking
     basePath = project.layout.projectDirectory.asFile.absolutePath
-
+    
     reports {
         custom {
             reportId = "code-climate"

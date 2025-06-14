@@ -9,10 +9,11 @@ plugins {
     id("io.gitlab.arturbosch.detekt") version "1.23.8"
     id("org.jetbrains.kotlinx.binary-compatibility-validator") version "0.17.0"
     id("com.star-zero.gradle.githook") version "1.2.1"
+    id("com.github.johnrengelman.shadow") version "8.1.1"
 }
 
 group = "io.github.lexa-diky"
-version = "0.1.0"
+version = "0.1.1"
 
 repositories {
     mavenCentral()
@@ -20,7 +21,7 @@ repositories {
 
 dependencies {
     compileOnly("io.gitlab.arturbosch.detekt:detekt-api:1.23.8")
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.1")
 }
 
 kotlin {
@@ -41,6 +42,18 @@ tasks.withType<Test>().configureEach {
     reports {
         junitXml.required = true
     }
+}
+
+tasks.shadowJar {
+    dependencies {
+        exclude { dependency ->
+            dependency.moduleGroup == "io.gitlab.arturbosch.detekt"
+        }
+    }
+
+    archiveClassifier.set("plugin")
+    isPreserveFileTimestamps = false
+    isReproducibleFileOrder = true
 }
 
 mavenPublishing {
