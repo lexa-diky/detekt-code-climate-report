@@ -1,4 +1,4 @@
-package net.lexadily.tech.cq.detekt.codeclimate.entity
+package io.github.lexadiky.detekt.codeclimate.entity
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
