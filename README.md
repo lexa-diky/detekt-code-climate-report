@@ -15,7 +15,7 @@ Shutout to [Cromefire's implementation](https://gitlab.com/cromefire/detekt-gitl
 
 ```kotlin
 dependencies {
-    add("detektPlugins", "io.github.lexa-diky:detekt-code-climate:0.0.2-SNAPSHOT")
+    add("detektPlugins", "io.github.lexa-diky:detekt-code-climate:0.1.0")
 }
 ```
 
