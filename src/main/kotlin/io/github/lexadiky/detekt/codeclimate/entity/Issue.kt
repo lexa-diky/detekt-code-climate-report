@@ -1,5 +1,7 @@
 package io.github.lexadiky.detekt.codeclimate.entity
 
+import io.github.lexadiky.detekt.codeclimate.escapeJson
+
 internal data class Issue(
     val checkName: String,
     val description: String,
@@ -14,15 +16,15 @@ internal data class Issue(
     val type: String = "issue"
 
     fun toJson(): String = "{" +
-            "\"check_name\":\"$checkName\"," +
-            "\"description\":\"$description\"," +
+            "\"check_name\":\"${checkName.escapeJson()}\"," +
+            "\"description\":\"${description.escapeJson()}\"," +
             "\"categories\":[${categories.joinToString(",") { it.toJson() }}]," +
             "\"location\":${location.toJson()}," +
             "\"other_locations\":[${otherLocations.joinToString(",") { it.toJson() }}]," +
             "\"remediation_points\":$remediationPoints," +
-            "\"severity\":\"$severity\"," +
-            "\"fingerprint\":\"$fingerprint\"," +
-            "\"type\":\"$type\"" +
+            "\"severity\":${severity.toJson()}," +
+            "\"fingerprint\":\"${fingerprint.escapeJson()}\"," +
+            "\"type\":\"${type.escapeJson()}\"" +
             "}"
 }
 
