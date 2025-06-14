@@ -36,11 +36,6 @@ tasks.withType<Detekt> {
     }
 }
 
-java {
-    withJavadocJar()
-    withSourcesJar()
-}
-
 tasks.withType<Test>().configureEach {
     useJUnitPlatform()
     reports {
