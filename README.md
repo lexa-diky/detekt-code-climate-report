@@ -14,10 +14,6 @@ Shutout to [Cromefire's implementation](https://gitlab.com/cromefire/detekt-gitl
 1. Add dependency on the library in `detektPlugin` configuration
 
 ```kotlin
-repositories {
-    maven("https://s01.oss.sonatype.org/content/repositories/snapshots/")
-}
-
 dependencies {
     add("detektPlugins", "io.github.lexa-diky:detekt-code-climate:0.0.2-SNAPSHOT")
 }

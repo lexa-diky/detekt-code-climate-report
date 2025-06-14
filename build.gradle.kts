@@ -1,30 +1,33 @@
 import io.gitlab.arturbosch.detekt.Detekt
+import com.vanniktech.maven.publish.SonatypeHost
 
 plugins {
-    kotlin("jvm") version libs.versions.kotlin
-    kotlin("plugin.serialization") version libs.versions.kotlin
-    id("io.gitlab.arturbosch.detekt") version libs.versions.detekt
-    id("maven-publish")
-    id("signing")
+    kotlin("jvm") version "2.1.21"
+    kotlin("plugin.serialization") version "2.1.21"
+
+    id("com.vanniktech.maven.publish") version "0.32.0"
+    id("io.gitlab.arturbosch.detekt") version "1.23.8"
+    id("org.jetbrains.kotlinx.binary-compatibility-validator") version "0.17.0"
+    id("com.star-zero.gradle.githook") version "1.2.1"
 }
 
-group = "net.lexadily.tech.cq"
-version = "0.0.1-SNAPSHOT"
+group = "io.github.lexa-diky"
+version = "0.1.0"
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    compileOnly(libs.detekt.api)
-    implementation(libs.kotlinx.serialization)
+    compileOnly("io.gitlab.arturbosch.detekt:detekt-api:1.23.8")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
 }
 
 kotlin {
-    jvmToolchain(8)
+    jvmToolchain(17)
 }
 
-tasks.register<Detekt>("detektCheck") {
+tasks.withType<Detekt> {
     allRules = true
     source(project.layout.projectDirectory.dir("src"))
     reports {
@@ -38,25 +41,44 @@ java {
     withSourcesJar()
 }
 
-publishing {
-    publications {
-        register("maven", MavenPublication::class) {
-            from(project.components["java"])
-            groupId = "io.github.lexa-diky"
-            artifactId = "detekt-code-climate"
-            version = "0.0.4-SNAPSHOT"
-        }
+tasks.withType<Test>().configureEach {
+    useJUnitPlatform()
+    reports {
+        junitXml.required = true
     }
 }
 
-publishing {
-    repositories {
-        maven {
-            url = uri("https://s01.oss.sonatype.org/content/repositories/snapshots/")
-            credentials {
-                username = System.getenv("MAVEN_CENTRAL_USERNAME")
-                password = System.getenv("MAVEN_CENTRAL_PASSWORD")
+mavenPublishing {
+    publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
+    signAllPublications()
+    coordinates(
+        groupId = group.toString(),
+        artifactId = "detekt-code-climate-report",
+        version = version.toString()
+    )
+
+    pom {
+        name = "detekt-code-climate-report"
+        description = "Detekt report generator for GitLab & CodeClimate"
+        inceptionYear = "2023"
+        url = "https://github.com/lexa-diky/detekt-code-climate-report"
+
+        licenses {
+            license {
+                name = "The Unlicense"
+                url = "https://unlicense.org/"
+                distribution = "repo"
             }
+        }
+        developers {
+            developer {
+                id = "lexa-diky"
+                name = "Aleksei Iakovlev"
+                url = "https://github.com/lexa-diky"
+            }
+        }
+        scm {
+            url = "https://github.com/lexa-diky/detekt-code-climate-report"
         }
     }
 }

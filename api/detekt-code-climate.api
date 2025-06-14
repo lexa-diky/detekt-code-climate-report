@@ -1,0 +1,9 @@
+public final class net/lexadily/tech/cq/detekt/codeclimate/DetektCodeClimateReport : io/gitlab/arturbosch/detekt/api/OutputReport {
+	public fun <init> ()V
+	public fun getEnding ()Ljava/lang/String;
+	public fun getId ()Ljava/lang/String;
+	public fun getName ()Ljava/lang/String;
+	public fun init (Lio/gitlab/arturbosch/detekt/api/Config;)V
+	public fun render (Lio/gitlab/arturbosch/detekt/api/Detektion;)Ljava/lang/String;
+}
+
