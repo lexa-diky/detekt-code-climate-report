@@ -1,20 +1,10 @@
 package io.github.lexadiky.detekt.codeclimate.entity
 
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
+internal enum class Category(private val value: String) {
+    Complexity("Complexity"),
+    Performance("Performance"),
+    BugRisk("Bug Risk"),
+    Style("Style");
 
-@Serializable
-internal enum class Category {
-
-    @SerialName("Complexity")
-    Complexity,
-
-    @SerialName("Performance")
-    Performance,
-
-    @SerialName("Bug Risk")
-    BugRisk,
-
-    @SerialName("Style")
-    Style
+    internal fun toJson() = "\"$value\""
 }

@@ -5,7 +5,8 @@
 ![Stars](https://img.shields.io/github/stars/lexa-diky/detekt-code-climate-report)
 ![GitHub](https://img.shields.io/github/license/lexa-diky/detekt-code-climate-report)
 
-Detekt report in [CodeClimate format](https://github.com/codeclimate/platform/blob/master/spec/analyzers/SPEC.md)
+Detekt report in [CodeClimate format](https://github.com/codeclimate/platform/blob/master/spec/analyzers/SPEC.md) used
+by GitLab code quality reporting.
 
 Shutout to [Cromefire's implementation](https://gitlab.com/cromefire/detekt-gitlab-report) for inspiration.
 
@@ -25,7 +26,7 @@ dependencies {
 tasks.withType<Detekt> {
     // (OPTIONAL) Required for proper relative file linking
     basePath = project.layout.projectDirectory.asFile.absolutePath
-    
+
     reports {
         custom {
             reportId = "code-climate"
@@ -34,10 +35,6 @@ tasks.withType<Detekt> {
     }
 }
 ```
-
-## Configuration
-
-`prettyPrint` (default: true) - if true, output json will be properly formatted and human-readable
 
 ## GitLab integration
 

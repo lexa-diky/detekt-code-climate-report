@@ -3,7 +3,6 @@ public final class io/github/lexadiky/detekt/codeclimate/DetektCodeClimateReport
 	public fun getEnding ()Ljava/lang/String;
 	public fun getId ()Ljava/lang/String;
 	public fun getName ()Ljava/lang/String;
-	public fun init (Lio/gitlab/arturbosch/detekt/api/Config;)V
 	public fun render (Lio/gitlab/arturbosch/detekt/api/Detektion;)Ljava/lang/String;
 }
 

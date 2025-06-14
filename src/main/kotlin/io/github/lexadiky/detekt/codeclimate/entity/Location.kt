@@ -1,12 +1,8 @@
 package io.github.lexadiky.detekt.codeclimate.entity
 
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
-
-@Serializable
 internal data class Location(
-    @SerialName("path")
     val path: String,
-    @SerialName("positions")
     val positions: Positions,
-)
+) {
+    fun toJson(): String = "{\"path\":\"$path\",\"positions\":${positions.toJson()}}"
+}

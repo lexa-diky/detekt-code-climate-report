@@ -1,16 +1,9 @@
 package io.github.lexadiky.detekt.codeclimate.entity
 
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
+internal enum class Severity(private val value: String) {
+    Info("info"),
+    Major("major"),
+    Critical("critical");
 
-@Serializable
-internal enum class Severity {
-    @SerialName("info")
-    Info,
-
-    @SerialName("major")
-    Major,
-
-    @SerialName("critical")
-    Critical,
+    internal fun toJson() = "\"$value\""
 }
