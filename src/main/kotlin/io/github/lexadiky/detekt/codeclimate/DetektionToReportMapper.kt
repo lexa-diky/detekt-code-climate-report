@@ -41,7 +41,10 @@ internal class DetektionToReportMapper {
             when (ruleSetId) {
                 DETEKT_RSID_COMPLEXITY -> Category.Complexity
                 DETEKT_RSID_PERFORMANCE -> Category.Performance
+                DETEKT_RSID_COROUTINES,
                 DETEKT_RSID_POTENTIAL_BUGS -> Category.BugRisk
+                DETEKT_RSID_COMMENTS,
+                DETEKT_RSID_NAMING -> Category.Clarity
                 else -> Category.Style
             }
         )
@@ -76,5 +79,8 @@ internal class DetektionToReportMapper {
         private const val DETEKT_RSID_COMPLEXITY: RuleSetId = "complexity"
         private const val DETEKT_RSID_PERFORMANCE: RuleSetId = "performance"
         private const val DETEKT_RSID_POTENTIAL_BUGS: RuleSetId = "potential-bugs"
+        private const val DETEKT_RSID_NAMING: RuleSetId = "naming"
+        private const val DETEKT_RSID_COROUTINES: RuleSetId = "coroutines"
+        private const val DETEKT_RSID_COMMENTS: RuleSetId = "comments"
     }
 }
