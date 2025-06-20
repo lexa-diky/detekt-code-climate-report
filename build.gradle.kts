@@ -11,7 +11,7 @@ plugins {
 }
 
 group = "io.github.lexa-diky"
-version = "0.2.1"
+version = "1.0.0"
 
 repositories {
     mavenCentral()
